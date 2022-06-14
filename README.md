@@ -14,8 +14,9 @@ Add some models in Gazebo.
 #### rviz
 ![](assets/rviz.png)
 
-## Notes
-ROS1と同様にrobot_state_publisherを用いて，rviz2にld06のモデルを表示したが，うまく表示されない．これは`/robot_description` topicがpublishされていないことが原因だと考えられる．
+## TODO
+- Gazeboに生成するモデルへのテクスチャの設定
+- LiDARによる計測対象の障害物をlaunch時に自動でGazebo環境中に生成
 
 ## References
 - [LD06 datasheets](https://www.inno-maker.com/wp-content/uploads/2020/11/LDROBOT_LD06_Datasheet.pdf)
