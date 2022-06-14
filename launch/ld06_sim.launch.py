@@ -16,7 +16,7 @@ def generate_launch_description():
 
     empty_world_path = os.path.join(pkg_dir, "worlds", "empty.world")
     pkg_gazebo_ros = get_package_share_directory("gazebo_ros")
-    urdf_file_path = os.path.join(pkg_dir, "description", "urdf", "ld06.urdf")
+    urdf_path = os.path.join(pkg_dir, "description", "urdf", "ld06.urdf")
     rviz_config_path = os.path.join(pkg_dir, "rviz", "display.rviz")
 
     gzserver_launch = IncludeLaunchDescription(
@@ -47,7 +47,15 @@ def generate_launch_description():
         name="robot_state_publisher",
         output="screen",
         parameters=[{"use_sim_time": True}],
-        arguments=[urdf_file_path],
+        arguments=[urdf_path],
+    )
+
+    static_transform_publisher_node = Node(
+        package="tf2_ros",
+        executable="static_transform_publisher",
+        name="static_transform_publisher",
+        output="screen",
+        arguments = ["0.5", "0.5", "0", "0", "0", "0", "world", "base_link"]
     )
 
     rviz2_node = Node(
@@ -61,10 +69,11 @@ def generate_launch_description():
     # Create the launch description and populate
     ld = LaunchDescription()
 
-    ld.add_action(robot_state_publisher_node)
-    ld.add_action(rviz2_node)
     ld.add_action(gzserver_launch)
     ld.add_action(gzclient_launch)
     ld.add_action(spawn_model_node)
+    ld.add_action(robot_state_publisher_node)
+    ld.add_action(static_transform_publisher_node)
+    ld.add_action(rviz2_node)
 
     return ld
