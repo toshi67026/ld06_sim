@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
-<robot name="ld06" xmlns:xacro="http://ros.org/wiki/xacro">
+<robot name="ld06"
+  xmlns:xacro="http://ros.org/wiki/xacro">
   <material name="light_black">
     <color rgba="0.4 0.4 0.4 1.0"/>
   </material>
@@ -13,9 +14,9 @@
     </collision>
 
     <visual name="ld06_visual">
-      <origin xyz="0.01665 0.0295 -0.003" rpy="0 0 0"/>
+      <origin xyz="-0.016259 0.027386 -0.003454" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://description/meshes/ld06.stl"/>
+        <mesh filename="package://ld06_sim/description/meshes/ld06.stl"/>
       </geometry>
       <material name="light_black"/>
     </visual>
@@ -27,5 +28,5 @@
     <parent link="base_link"/>
     <child link="base_scan"/>
     <origin xyz="0 0 0.0257" rpy="0 0 0"/>
-  </joint> 
+  </joint>
 </robot>

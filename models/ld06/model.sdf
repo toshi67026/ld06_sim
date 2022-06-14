@@ -18,7 +18,8 @@
       </collision>
 
       <visual name="ld06_visual">
-        <pose>-0.0165 0.0295 -0.003 0 0 0</pose>
+        <!--calcurate from ld06 cad model-->
+        <pose>-0.016259 0.027386 -0.003454 0 0 0</pose>
         <geometry>
           <mesh>
             <uri>model://ld06/meshes/ld06.dae</uri>
@@ -65,7 +66,6 @@
         </ray>
         <plugin name="gazebo_ros_ld06_controller" filename="libgazebo_ros_ray_sensor.so">
           <ros>
-            <!-- <namespace>/tb3</namespace> -->
             <remapping>~/out:=scan</remapping>
           </ros>
           <output_type>sensor_msgs/LaserScan</output_type>
