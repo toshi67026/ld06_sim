@@ -25,6 +25,12 @@
             <uri>model://ld06/meshes/ld06.dae</uri>
           </mesh>
         </geometry>
+        <material>
+          <script>
+            <name>Gazebo/DarkGrey</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
       </visual>
     </link>
 
