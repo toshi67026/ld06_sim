@@ -29,8 +29,6 @@ setup(
     license="Apache License 2.0",
     tests_require=["pytest"],
     entry_points={
-        "console_scripts": [
-            "spawn_model=ld06_sim.spawn_model:main",
-        ],
+        "console_scripts": [],
     },
 )
