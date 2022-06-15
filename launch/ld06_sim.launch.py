@@ -28,17 +28,11 @@ def generate_launch_description():
         PythonLaunchDescriptionSource(os.path.join(pkg_gazebo_ros, "launch", "gzclient.launch.py"))
     )
 
-    spawn_model_node = Node(
-        package="ld06_sim",
-        executable="spawn_model",
-        arguments=[
-            "--model_name",
-            LaunchConfiguration("model", default="ld06"),
-            "-x",
-            LaunchConfiguration("x_init", default=0.5),
-            "-y",
-            LaunchConfiguration("y_init", default=0.5),
-        ],
+    spawn_entity_node = Node(
+        package="gazebo_ros",
+        executable="spawn_entity.py",
+        output="screen",
+        arguments=["-entity", "ld06_model", "-database", "ld06", "-x", "0.5", "-y", "0.5"],
     )
 
     robot_state_publisher_node = Node(
@@ -55,7 +49,7 @@ def generate_launch_description():
         executable="static_transform_publisher",
         name="static_transform_publisher",
         output="screen",
-        arguments = ["0.5", "0.5", "0", "0", "0", "0", "world", "base_link"]
+        arguments=["0.5", "0.5", "0", "0", "0", "0", "world", "base_link"],
     )
 
     rviz2_node = Node(
@@ -71,7 +65,7 @@ def generate_launch_description():
 
     ld.add_action(gzserver_launch)
     ld.add_action(gzclient_launch)
-    ld.add_action(spawn_model_node)
+    ld.add_action(spawn_entity_node)
     ld.add_action(robot_state_publisher_node)
     ld.add_action(static_transform_publisher_node)
     ld.add_action(rviz2_node)
