@@ -14,6 +14,8 @@ setup(
         ("share/" + package_name, ["package.xml"]),
         (os.path.join("share", package_name, "models/ld06"), glob("models/ld06/*.sdf")),
         (os.path.join("share", package_name, "models/ld06"), glob("models/ld06/*.config")),
+        (os.path.join("share", package_name, "models/unit_box"), glob("models/unit_box/*")),
+        (os.path.join("share", package_name, "models/unit_cylinder"), glob("models/unit_cylinder/*")),
         (os.path.join("share", package_name, "models/ld06/meshes"), glob("models/ld06/meshes/*")),
         (os.path.join("share", package_name, "description/urdf"), glob("description/urdf/*.urdf")),
         (os.path.join("share", package_name, "description/meshes"), glob("description/meshes/*")),
