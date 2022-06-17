@@ -5,8 +5,6 @@
 ros2 launch ld06_sim ld06_sim.launch.py
 ```
 
-Add some models in Gazebo.
-
 ### Results
 #### gazebo
 ![](assets/gazebo.png)
@@ -16,10 +14,6 @@ Add some models in Gazebo.
 
 #### rqt_graph
 ![](assets/rosgraph.png)
-
-## TODO
-- Gazeboに生成するモデルへのテクスチャの設定
-- LiDARによる計測対象の障害物をlaunch時に自動でGazebo環境中に生成
 
 ## Notes
 rviz2上にRobotModelを表示する際はrviz側のPolicyの設定に注意．現状`Reliability Policy`について，`Best Effort`ではなく，`Reliable`を指定すると上記のようにモデルを表示できることが分かっている．
