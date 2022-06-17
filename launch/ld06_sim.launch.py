@@ -8,7 +8,6 @@ from launch_ros.actions import Node
 from launch import LaunchDescription
 from launch.actions import IncludeLaunchDescription
 from launch.launch_description_sources import PythonLaunchDescriptionSource
-from launch.substitutions import LaunchConfiguration
 
 
 def generate_launch_description():
@@ -28,11 +27,25 @@ def generate_launch_description():
         PythonLaunchDescriptionSource(os.path.join(pkg_gazebo_ros, "launch", "gzclient.launch.py"))
     )
 
-    spawn_entity_node = Node(
+    spawn_ld06_node = Node(
         package="gazebo_ros",
         executable="spawn_entity.py",
         output="screen",
-        arguments=["-entity", "ld06_model", "-database", "ld06", "-x", "0.5", "-y", "0.5"],
+        arguments=["-entity", "ld06", "-database", "ld06", "-x", "0.5", "-y", "0.5"],
+    )
+
+    spawn_unit_box_node = Node(
+        package="gazebo_ros",
+        executable="spawn_entity.py",
+        output="screen",
+        arguments=["-entity", "unit_box", "-database", "unit_box", "-x", "1.5", "-y", "1.5"],
+    )
+
+    spawn_unit_cylinder_node = Node(
+        package="gazebo_ros",
+        executable="spawn_entity.py",
+        output="screen",
+        arguments=["-entity", "unit_cylinder", "-database", "unit_cylinder", "-x", "1.5", "-y", "0"],
     )
 
     robot_state_publisher_node = Node(
@@ -65,7 +78,9 @@ def generate_launch_description():
 
     ld.add_action(gzserver_launch)
     ld.add_action(gzclient_launch)
-    ld.add_action(spawn_entity_node)
+    ld.add_action(spawn_ld06_node)
+    ld.add_action(spawn_unit_box_node)
+    ld.add_action(spawn_unit_cylinder_node)
     ld.add_action(robot_state_publisher_node)
     ld.add_action(static_transform_publisher_node)
     ld.add_action(rviz2_node)
